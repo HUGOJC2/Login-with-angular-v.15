@@ -355,16 +355,16 @@
 .wrap-input100 {
   width: 100%;
   background-color: #fff;
+  margin-top: 5px;
   border-radius: 27px;
   position: relative;
   z-index: 1;
-  border:0px; 
+  border:0px;
 }
 
 .input100 {
   font-family: Ubuntu-Bold;
   font-size: 15px;
-  margin-top: 30px;
   color: #351538;
   line-height: 1.2;
 
@@ -920,7 +920,7 @@
 .p-t-175 {padding-top: 175px;}
 .p-t-176 {padding-top: 176px;}
 .p-t-177 {padding-top: 177px;}
-.p-t-178 {padding-top: 160px;}
+.p-t-178 {padding-top: 178px;}
 .p-t-179 {padding-top: 179px;}
 .p-t-180 {padding-top: 180px;}
 .p-t-181 {padding-top: 181px;}
@@ -3519,4 +3519,8 @@
 	position: absolute;
 	right: 0px;
 	bottom: 0px;
+}
+
+.campos{
+  padding-left: 25px;
 }

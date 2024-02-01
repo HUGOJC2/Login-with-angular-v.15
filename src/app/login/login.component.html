@@ -10,17 +10,17 @@
                       </span>
   
                       <div class="wrap-input100 validate-input m-b-16" data-validate="Porfavor ingresa tu Usuario">
-                          <input class="input100" type="text" name="username" placeholder="Usuario">
+                          <input class="input100" type="text" name="username" placeholder="Usuario" [(ngModel)]="username">
                           <span class="focus-input100"></span>
                       </div>
   
                       <div class="wrap-input100 validate-input" data-validate = "Porfavor ingresa tu Contraseña">
-                          <input class="input100" type="password" name="pass" placeholder="Contraseña">
+                          <input class="input100" type="password" name="pass" placeholder="Contraseña" [(ngModel)]="password">
                           <span class="focus-input100"></span>
                       </div>
   
                       <div class="container-login100-form-btn">
-                          <button class="login100-form-btn">
+                          <button class="login100-form-btn" (click)="login()">
                               Ingresar
                           </button>
                       </div>

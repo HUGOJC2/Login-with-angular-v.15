@@ -1,0 +1,48 @@
+<div class="content" role="main">
+
+    <!-- Registro -->
+    <div class="limiter">
+          <div class="container-login100">
+              <div class="wrap-login100">
+                  <form class="login100-form validate-form p-l-55 p-r-55 p-t-178" *ngIf="user">
+                        <span class="login100-form-title">
+                            Detalles Usuario
+                        </span>
+                        
+                        <b class="campos">Nombre:</b> 
+                        <div class="wrap-input100 validate-input m-b-16" data-validate="Porfavor ingresa tu Nombre">
+                            <input class="input100" type="text" name="name" value="{{ user.name }}" readonly>
+                            <span class="focus-input100"></span>
+                        </div>
+                        
+                        <b class="campos">Apellido Paterno:</b>
+                        <div class="wrap-input100 validate-input m-b-16" data-validate="Porfavor ingresa tu Apellido Paterno">
+                            <input class="input100" type="text" name="name" value="{{ user.middle_name }}" readonly>
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <b class="campos">Apellido Materno:</b>
+                        <div class="wrap-input100 validate-input m-b-16" data-validate="Porfavor ingresa tu Apellido Materno">
+                            <input class="input100" type="text" name="name" value="{{ user.last_name }}" readonly>
+                            <span class="focus-input100"></span>
+                        </div>
+                        
+                        <b class="campos">Usuario:</b>
+                        <div class="wrap-input100 validate-input m-b-16" data-validate="Porfavor ingresa tu Usuario">
+                            <input class="input100" type="text" name="username" value="{{ user.username }}" readonly>
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <!-- <div class="wrap-input100 validate-input" data-validate = "Porfavor ingresa tu Contraseña">
+                            <input class="input100" type="password" name="pass"  readonly>
+                            <span class="focus-input100"></span>
+                        </div> -->
+                        <p-button class="p-button-sm btn btn-secondary" routerLink="/users" style="margin-top: 20px;">
+                            <i class="pi pi-arrow-circle-left" style="font-size: 0.8rem"></i> Regresar
+                        </p-button>
+                        <div class="flex-col-c p-t-170 p-b-40" style="padding-top: 20px;"></div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>

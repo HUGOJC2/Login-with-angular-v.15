@@ -10,32 +10,32 @@
                         </span>
   
                         <div class="wrap-input100 validate-input m-b-16" data-validate="Porfavor ingresa tu Nombre">
-                            <input class="input100" type="text" name="name" placeholder="Nombre">
+                            <input class="input100" type="text" name="name" placeholder="Nombre" [(ngModel)]="name">
                             <span class="focus-input100"></span>
                         </div>
 
                         <div class="wrap-input100 validate-input m-b-16" data-validate="Porfavor ingresa tu Apellido Paterno">
-                            <input class="input100" type="text" name="name" placeholder="Apellido Paterno">
+                            <input class="input100" type="text" name="middle_name" placeholder="Apellido Paterno" [(ngModel)]="middle_name">
                             <span class="focus-input100"></span>
                         </div>
 
                         <div class="wrap-input100 validate-input m-b-16" data-validate="Porfavor ingresa tu Apellido Materno">
-                            <input class="input100" type="text" name="name" placeholder="Apellido Materno">
+                            <input class="input100" type="text" name="last_name" placeholder="Apellido Materno" [(ngModel)]="last_name">
                             <span class="focus-input100"></span>
                         </div>
                       
                         <div class="wrap-input100 validate-input m-b-16" data-validate="Porfavor ingresa tu Usuario">
-                            <input class="input100" type="text" name="username" placeholder="Usuario">
+                            <input class="input100" type="text" name="username" placeholder="Usuario" [(ngModel)]="username">
                             <span class="focus-input100"></span>
                         </div>
 
                         <div class="wrap-input100 validate-input" data-validate = "Porfavor ingresa tu Contraseña">
-                            <input class="input100" type="password" name="pass" placeholder="Contraseña">
+                            <input class="input100" type="password" name="password" placeholder="Contraseña" [(ngModel)]="password">
                             <span class="focus-input100"></span>
                         </div>
 
                         <div class="container-login100-form-btn">
-                            <button class="login100-form-btn">
+                            <button class="login100-form-btn" (click)="registro()">
                                 Ingresar
                             </button>
                         </div>
