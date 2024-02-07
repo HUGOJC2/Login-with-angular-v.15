@@ -13,7 +13,8 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { EditComponent } from './users/edit/edit.component';
 import { DetailComponent } from './users/detail/detail.component';
 import { FormsModule } from '@angular/forms';
-import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from './service/auth/auth.service';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 
 
@@ -25,6 +26,7 @@ import { CookieService } from 'ngx-cookie-service';
     UsersComponent,
     EditComponent,
     DetailComponent,
+    ToolbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,7 @@ import { CookieService } from 'ngx-cookie-service';
     ToolbarModule,
     FormsModule
   ],
-  providers: [CookieService],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

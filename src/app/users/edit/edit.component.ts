@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/users';
 import { UsersService } from 'src/app/service/users.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit',
@@ -19,6 +20,7 @@ export class EditComponent {
   constructor(
     private route: ActivatedRoute,
     private usersService: UsersService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -44,6 +46,17 @@ export class EditComponent {
       username: this.username
     };
 
-    this.usersService.updateUser(parseInt(this.id), usuario).subscribe();
+    this.usersService.updateUser(parseInt(this.id), usuario).subscribe(
+      (res) => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Usuario actualizado con Exito",
+          showConfirmButton: false,
+          timer: 1200,
+        });
+        this.router.navigate(['/users']);
+      }
+    );
   }
 }

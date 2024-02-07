@@ -1,0 +1,95 @@
+import { EventEmitter, Injectable, Output } from '@angular/core';
+import { HttpClient, HttpHeaders, } from '@angular/common/http';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
+import { tap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment.development';
+
+const OPTIONS = {
+  reportProgress: true,
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+};
+const helper = new JwtHelperService();
+@Injectable()
+export class AuthService {
+  @Output() getUserLoggedInData: EventEmitter<any> = new EventEmitter();
+  hasUser = false;
+  checkAuth = setInterval(() => { null }, 0);
+
+  constructor(private http: HttpClient, private router: Router) {
+    //this.getToken();
+  }
+
+  isAuth() {
+    //Token decodificado
+    
+    const decodedToken = this.getTokenData();
+
+    if (decodedToken) {
+      this.getUserLoggedInData.emit(decodedToken);
+      this.hasUser = true;
+    } else {
+      this.getUserLoggedInData.emit();
+      this.hasUser = false;
+    }
+    return this.hasUser;
+  }
+
+  saveToken(data: any) {
+    
+    let successfullySavedToken = false;
+    console.log("**********",data);
+    const encodedToken = data;
+    console.log("----", encodedToken.access_token);
+    //Hace falta que regrese los demas datos
+    localStorage.setItem('token', encodedToken.token);
+    if (this.getTokenData()) {
+      successfullySavedToken = true;
+    }
+    return successfullySavedToken;
+  }
+
+  getTokenData() {
+    let decodedToken;
+    //Validamos el tiempo de expiracion del token
+    if (localStorage.getItem('token')) {
+      const encodedToken = localStorage.getItem('token')!;
+      //Decodificacion del token
+      decodedToken = helper.decodeToken(encodedToken);
+      console.log("-------------")
+      console.log(decodedToken);
+      const timeRemaningJWT = decodedToken.exp - Math.floor(new Date().getTime() / 1000.0);
+      if (timeRemaningJWT <= 0) {
+        localStorage.removeItem('token');
+        decodedToken = null;
+      }
+    } else {
+      decodedToken = null;
+    }
+    return decodedToken;
+  }
+
+  logIn(user: any) {
+    return this.http
+      .post(`${environment.apiUrl}/user/login`,JSON.stringify(user), OPTIONS)
+      .pipe(tap(data => {
+        console.log(data);
+        this.saveToken(data);
+        clearInterval(this.checkAuth);
+        this.checkAuth = setInterval(() => {
+          this.isAuth()
+        }, 10000);
+      }))
+  }
+
+  logOut() {
+    let successfullyRemovedToken = false;
+    localStorage.removeItem('token');
+    if (localStorage.getItem('token') === null) {
+      successfullyRemovedToken = true;
+      clearInterval(this.checkAuth);
+      this.router.navigateByUrl('/login');
+    }
+    return successfullyRemovedToken;
+  }
+}

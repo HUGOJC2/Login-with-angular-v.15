@@ -5,6 +5,7 @@ import { Table } from 'primeng/table';
 import { LazyLoadEvent } from 'primeng/api';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AuthService } from '../service/auth/auth.service';
 
 @Component({
   selector: 'app-users',
@@ -20,7 +21,7 @@ export class UsersComponent implements OnInit{
   rows = 10;
   totalRecords: number = 0;
 
-  constructor(private userService: UsersService, public router: Router) {}
+  constructor(private userService: UsersService, public router: Router, public auth: AuthService) {}
 
   ngOnInit(){
     this.cargar()
@@ -46,6 +47,7 @@ export class UsersComponent implements OnInit{
             position: "center",
             icon: "success",
             title: "Usuario eliminado",
+            timer: 1200,
             showConfirmButton: false,
           });
           setTimeout(() => {
@@ -85,9 +87,6 @@ export class UsersComponent implements OnInit{
   getAll(event: LazyLoadEvent){
     if (event) {
       this.loadingTable = true;
-      /* this.mmu.getTotalRegisters(event.first, event.rows, event.filters["username"]?.value, event.filters["firstName"]?.value, event.filters["middleName"]?.value, event.filters["lastName"]?.value, event.filters["roles.role"]?.value).subscribe(res => {
-        this.totalRecords = res.payload;
-      }); */
       setTimeout(() => {
         this.userService.getAll().subscribe(res => {
           this.users = res;
@@ -97,5 +96,7 @@ export class UsersComponent implements OnInit{
     }
   }
 
-  
+  sign_out(){
+    this.auth.logOut();
+  }
 }

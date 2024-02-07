@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from "src/environments/environment.development";
-import { CookieService } from 'ngx-cookie-service';
 import { User } from '../model/users';
 
 
@@ -17,7 +16,7 @@ const OPTIONS = {
 
 export class UsersService {
 
-  constructor(private http:HttpClient, private cookies: CookieService) { }
+  constructor(private http:HttpClient) { }
 
   getAll(): Observable<any>{
     return this.http.get(`${environment.apiUrl}/user/all`, OPTIONS);
@@ -39,7 +38,4 @@ export class UsersService {
     return this.http.delete(`${environment.apiUrl}/user/${id}`, OPTIONS);
   }
 
-  // login(user: any): Observable<any> {
-  //   return this.http.post(`${environment.apiUrl}/user/login`, OPTIONS, user);
-  // }
 }

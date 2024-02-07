@@ -15,8 +15,7 @@ export class RegisterComponent {
   username: string = "";
   password: string = "";
 
-  constructor(private userService: UsersService,
-    private router: Router) {}
+  constructor(private userService: UsersService, private router: Router) {}
 
   registro(){
     const user = { 
@@ -25,9 +24,7 @@ export class RegisterComponent {
       last_name: this.last_name,
       username: this.username,
       password: this.password
-    };
-    console.log(user);
-    
+    };    
 
     this.userService.register(user).subscribe(
       (res) => {
@@ -36,7 +33,7 @@ export class RegisterComponent {
           icon: "success",
           title: "Usuario registrado con Exito",
           showConfirmButton: false,
-          timer: 2500
+          timer: 1200,
         });
         this.router.navigate(['/users']);
       }

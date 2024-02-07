@@ -27,7 +27,6 @@ export class DetailComponent implements OnInit{
     this.usersService.getUser(parseInt(this.id)).subscribe((res) => {
       this.user = res;
     });
-      // .suscribe(user2 => this.user = user2);
   }
     
 }
