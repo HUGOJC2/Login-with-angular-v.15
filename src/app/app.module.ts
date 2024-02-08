@@ -15,7 +15,11 @@ import { DetailComponent } from './users/detail/detail.component';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './service/auth/auth.service';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-
+import { SidebarModule } from 'primeng/sidebar';
+import { AvatarModule } from 'primeng/avatar';
+import { ButtonModule } from 'primeng/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -27,6 +31,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     EditComponent,
     DetailComponent,
     ToolbarComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,11 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     HttpClientModule,
     ToastModule,
     ToolbarModule,
-    FormsModule
+    FormsModule,
+    SidebarModule,
+    AvatarModule,
+    ButtonModule,
+    BrowserAnimationsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

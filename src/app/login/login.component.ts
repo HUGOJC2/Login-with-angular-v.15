@@ -19,23 +19,21 @@ export class LoginComponent {
 
   ngOnInit(): void {
     if (this.auth.isAuth()) {
-      this.router.navigateByUrl('/users');
+      this.router.navigateByUrl('/home');
     }
   }
 
   login(){
     const user = {username: this.username, password: this.password}
-    this.auth.logIn(user).subscribe((data) => {
-    this.router.navigateByUrl('/users');
-    },
-    
-    err =>{
-      Swal.fire({
+    this.auth.logIn(user).subscribe({
+    complete: () => this.router.navigateByUrl('/home'),
+    error: (err) => Swal.fire({
         icon: "error",
         title: "Error al autenticar",
         timer: 1200,
         text: err.error.message,
-      });
-    });
+      })
+    }
+    );
   }
 }

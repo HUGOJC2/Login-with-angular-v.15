@@ -38,9 +38,7 @@ export class AuthService {
   saveToken(data: any) {
     
     let successfullySavedToken = false;
-    console.log("**********",data);
     const encodedToken = data;
-    console.log("----", encodedToken.access_token);
     //Hace falta que regrese los demas datos
     localStorage.setItem('token', encodedToken.token);
     if (this.getTokenData()) {
@@ -56,8 +54,6 @@ export class AuthService {
       const encodedToken = localStorage.getItem('token')!;
       //Decodificacion del token
       decodedToken = helper.decodeToken(encodedToken);
-      console.log("-------------")
-      console.log(decodedToken);
       const timeRemaningJWT = decodedToken.exp - Math.floor(new Date().getTime() / 1000.0);
       if (timeRemaningJWT <= 0) {
         localStorage.removeItem('token');
@@ -73,7 +69,6 @@ export class AuthService {
     return this.http
       .post(`${environment.apiUrl}/user/login`,JSON.stringify(user), OPTIONS)
       .pipe(tap(data => {
-        console.log(data);
         this.saveToken(data);
         clearInterval(this.checkAuth);
         this.checkAuth = setInterval(() => {
