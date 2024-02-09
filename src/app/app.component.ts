@@ -11,12 +11,14 @@ export class AppComponent implements OnInit{
   title = 'login';
   hasUser: boolean = false;
   sidebarExpanded = false;
+  user = "";
 
   constructor(
     private auth: AuthService,
   ) {
     this.auth.getUserLoggedInData.subscribe((data: any) => {
       if (data) {
+        this.user = data.username;
         this.hasUser = true;
         const element = document.getElementById("sidebar");
         element?.classList.remove("logout");

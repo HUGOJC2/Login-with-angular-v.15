@@ -1,3 +1,4 @@
 <!-- Toolbar -->
 <app-toolbar *ngIf="hasUser" (sideBar)="addItem($event)"></app-toolbar>
+<app-toolbar [username]="user" ></app-toolbar>
 <router-outlet></router-outlet>
