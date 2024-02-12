@@ -424,6 +424,13 @@
   border:0px;
 }
 
+.invalid{
+  color: red;
+  margin-left: 25px;
+  margin-bottom: 20px;
+}
+
+
 .login100-form-btn {
   display: -webkit-box;
   display: -webkit-flex;
@@ -459,6 +466,7 @@
 
 .campos{
   padding-left: 25px;
+  margin-top: 10px;
 }
 
 /*------------------------------------------------------------------

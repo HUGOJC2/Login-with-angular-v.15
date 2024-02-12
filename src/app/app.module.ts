@@ -12,7 +12,7 @@ import { ToastModule } from 'primeng/toast';
 import { ToolbarModule } from 'primeng/toolbar';
 import { EditComponent } from './users/edit/edit.component';
 import { DetailComponent } from './users/detail/detail.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './service/auth/auth.service';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { SidebarModule } from 'primeng/sidebar';
@@ -40,11 +40,12 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     ToastModule,
     ToolbarModule,
-    FormsModule,
+    ReactiveFormsModule,
     SidebarModule,
     AvatarModule,
     ButtonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

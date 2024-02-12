@@ -4,42 +4,117 @@
     <div class="limiter">
           <div class="container-login100">
               <div class="wrap-login100">
-                  <form class="login100-form validate-form p-l-55 p-r-55 p-t-178">
+                  <form class="login100-form validate-form p-l-55 p-r-55 p-t-178" [formGroup]="editForm" (ngSubmit)="update()">
                         <span class="login100-form-title">
                             Editar Usuario
                         </span>
                         
                         <b class="campos">Nombre:</b> 
                         <div class="wrap-input100 validate-input m-b-16" data-validate="Porfavor ingresa tu Nombre">
-                            <input class="input100" type="text" name="name" [(ngModel)]="name">
+                            <input class="input100" type="text" name="name" formControlName="name" required [ngClass]="{
+                                'is-invalid':
+                                  name.invalid &&
+                                  (name.dirty ||
+                                  name.touched ||
+                                  name.errors.minlength),
+                                'is-valid': name.valid
+                              }" />
                             <span class="focus-input100"></span>
+                        </div>
+                        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="form-text invalid">
+                            <div *ngIf="name.errors.required">
+                              El campo es obligatorio
+                            </div>
+                            <div *ngIf="name.errors.minlength">
+                              El usuario debe ser de al menos 4 caracteres
+                            </div>
                         </div>
                         
                         <b class="campos">Apellido Paterno:</b>
                         <div class="wrap-input100 validate-input m-b-16" data-validate="Porfavor ingresa tu Apellido Paterno">
-                            <input class="input100" type="text" name="middle_name" [(ngModel)]="middle_name">
+                            <input class="input100" type="text" name="middle_name" formControlName="middle_name" required [ngClass]="{
+                                'is-invalid':
+                                middle_name.invalid &&
+                                  (middle_name.dirty ||
+                                  middle_name.touched ||
+                                  middle_name.errors.minlength),
+                                'is-valid': middle_name.valid
+                              }" />
                             <span class="focus-input100"></span>
+                        </div>
+                        <div *ngIf="middle_name.invalid && (middle_name.dirty || middle_name.touched)" class="form-text invalid">
+                            <div *ngIf="middle_name.errors.required">
+                              El campo es obligatorio
+                            </div>
+                            <div *ngIf="middle_name.errors.minlength">
+                              El usuario debe ser de al menos 4 caracteres
+                            </div>
                         </div>
 
                         <b class="campos">Apellido Materno:</b>
                         <div class="wrap-input100 validate-input m-b-16" data-validate="Porfavor ingresa tu Apellido Materno">
-                            <input class="input100" type="text" name="last_name" [(ngModel)]="last_name">
+                            <input class="input100" type="text" name="last_name" formControlName="last_name" required [ngClass]="{
+                                'is-invalid':
+                                last_name.invalid &&
+                                  (last_name.dirty ||
+                                  last_name.touched ||
+                                  last_name.errors.minlength),
+                                'is-valid': last_name.valid
+                              }" />
                             <span class="focus-input100"></span>
+                        </div>
+                        <div *ngIf="last_name.invalid && (last_name.dirty || last_name.touched)" class="form-text invalid">
+                            <div *ngIf="last_name.errors.required">
+                              El campo es obligatorio
+                            </div>
+                            <div *ngIf="last_name.errors.minlength">
+                              El usuario debe ser de al menos 4 caracteres
+                            </div>
                         </div>
                         
                         <b class="campos">Usuario:</b>
                         <div class="wrap-input100 validate-input m-b-16" data-validate="Porfavor ingresa tu Usuario">
-                            <input class="input100" type="text" name="username" [(ngModel)]="username">
+                            <input class="input100" type="text" name="username" formControlName="username" required [ngClass]="{
+                                'is-invalid':
+                                username.invalid &&
+                                  (username.dirty ||
+                                  username.touched ||
+                                  username.errors.minlength),
+                                'is-valid': username.valid
+                              }" />
                             <span class="focus-input100"></span>
+                        </div>
+                        <div *ngIf="username.invalid && (username.dirty || username.touched)" class="form-text invalid">
+                            <div *ngIf="username.errors.required">
+                              El campo es obligatorio
+                            </div>
+                            <div *ngIf="username.errors.minlength">
+                              El usuario debe ser de al menos 4 caracteres
+                            </div>
                         </div>
 
                         <!-- <div class="wrap-input100 validate-input" data-validate = "Porfavor ingresa tu Contraseña">
-                            <input class="input100" type="password" name="pass">
+                            <input class="input100" type="password" name="pass" formControlName="password" required [ngClass]="{
+                                'is-invalid':
+                                password.invalid &&
+                                  (password.dirty ||
+                                  password.touched ||
+                                  password.errors.minlength),
+                                'is-valid': password.valid
+                              }" />
                             <span class="focus-input100"></span>
+                        </div>
+                        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="form-text invalid">
+                            <div *ngIf="password.errors.required">
+                              El campo es obligatorio
+                            </div>
+                            <div *ngIf="password.errors.minlength">
+                              El usuario debe ser de al menos 4 caracteres
+                            </div>
                         </div> -->
 
                         <div class="container-login100-form-btn">
-                            <button class="login100-form-btn" (click)="update()">
+                            <button class="login100-form-btn" type="submit">
                                 Actualizar
                             </button>
                         </div>  

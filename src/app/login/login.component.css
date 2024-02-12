@@ -349,6 +349,11 @@
   padding-bottom: 39px;
 }
 
+.invalid{
+  color: red;
+  margin-left: 25px;
+}
+
 /*------------------------------------------------------------------
 [ Input ]*/
 
@@ -366,7 +371,7 @@
   font-size: 15px;
   color: #351538;
   line-height: 1.2;
-
+  margin-top: 20px;
   position: relative;
   display: block;
   width: 100%;

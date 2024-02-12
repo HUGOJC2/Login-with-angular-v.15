@@ -12,23 +12,53 @@
     <div class="limiter">
           <div class="container-login100">
               <div class="wrap-login100">
-                  <form class="login100-form validate-form p-l-55 p-r-55 p-t-178">
+                  <form class="login100-form validate-form p-l-55 p-r-55 p-t-178" [formGroup]="loginForm" (ngSubmit)="login()">
                       <span class="login100-form-title">
                           Inicio de Sesión
                       </span>
   
                       <div class="wrap-input100 validate-input m-b-16" data-validate="Porfavor ingresa tu Usuario">
-                          <input class="input100" type="text" name="username" placeholder="Usuario" [(ngModel)]="username">
+                          <input class="input100" type="text" name="username" placeholder="Usuario" formControlName="username" required [ngClass]="{
+                            'is-invalid':
+                            username.invalid &&
+                              (username.dirty ||
+                              username.touched ||
+                              username.errors.minlength),
+                            'is-valid': username.valid
+                          }" />
                           <span class="focus-input100"></span>
                       </div>
+                      <div *ngIf="username.invalid && (username.dirty || username.touched)" class="form-text invalid">
+                        <div *ngIf="username.errors.required">
+                          El campo es obligatorio
+                        </div>
+                        <div *ngIf="username.errors.minlength">
+                          El usuario debe ser de al menos 4 caracteres
+                        </div>
+                    </div>
   
                       <div class="wrap-input100 validate-input" data-validate = "Porfavor ingresa tu Contraseña">
-                          <input class="input100" type="password" name="pass" placeholder="Contraseña" [(ngModel)]="password">
+                          <input class="input100" type="password" name="pass" placeholder="Contraseña" formControlName="password" required [ngClass]="{
+                            'is-invalid':
+                            password.invalid &&
+                              (password.dirty ||
+                              password.touched ||
+                              password.errors.minlength),
+                            'is-valid': password.valid
+                          }" />
                           <span class="focus-input100"></span>
                       </div>
+                      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="form-text invalid">
+                        <div *ngIf="password.errors.required">
+                          El campo es obligatorio
+                        </div>
+                        <div *ngIf="password.errors.minlength">
+                          El usuario debe ser de al menos 4 caracteres
+                        </div>
+                    </div>
   
                       <div class="container-login100-form-btn">
-                          <button class="login100-form-btn" (click)="login()">
+                          <button class="login100-form-btn" type="submit">
                               Ingresar
                           </button>
                       </div>
