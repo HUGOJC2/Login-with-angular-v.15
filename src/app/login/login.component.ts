@@ -5,6 +5,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import Swal from 'sweetalert2';
 import { AuthService } from '../service/auth/auth.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-login',
@@ -13,13 +14,16 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit{
   loginForm: any;
+  faEyeSlash = faEyeSlash;
+  faEye = faEye;
+  fieldTextType: boolean = false;
 
   constructor(public router: Router, public auth: AuthService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(3)]],
-      password: ['', [Validators.required, Validators.minLength(3)]],
+      username: ['', [Validators.required, Validators.minLength(4)]],
+      password: ['', [Validators.required, Validators.minLength(4)]],
     })
     if (this.auth.isAuth()) {
       this.router.navigateByUrl('/home');
@@ -32,6 +36,10 @@ export class LoginComponent implements OnInit{
 
   get password() {
     return this.loginForm.get('password');
+  }
+
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
   }
 
   login(){

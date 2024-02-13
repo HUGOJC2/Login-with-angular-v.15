@@ -32,14 +32,21 @@
                             <input class="input100" type="text" name="username" value="{{ user.username }}" readonly>
                             <span class="focus-input100"></span>
                         </div>
-
-                        <!-- <div class="wrap-input100 validate-input" data-validate = "Porfavor ingresa tu Contraseña">
-                            <input class="input100" type="password" name="pass"  readonly>
+                        
+                        <b class="campos">Contraseña:</b>
+                        <div class="wrap-input100 validate-input" data-validate = "Porfavor ingresa tu Contraseña" style="display: flex;">
+                            <input class="input100" [type]="fieldTextType ? 'text' : 'password'" name="pass" value="{{ user.password }}" readonly>
+                            <span class="input-group-text">
+                                <fa-icon [icon]="faEyeSlash" *ngIf="!fieldTextType" (click)="toggleFieldTextType()" />
+                                <fa-icon [icon]="faEye" *ngIf="fieldTextType" (click)="toggleFieldTextType()" />
+                            </span>
                             <span class="focus-input100"></span>
-                        </div> -->
+                        </div>
+
                         <button class="p-button-sm btn btn-secondary" routerLink="/users" style="margin-top: 20px;">
                             <i class="pi pi-arrow-circle-left" style="font-size: 0.8rem"></i> Regresar
                         </button>
+
                         <div class="flex-col-c p-t-170 p-b-40" style="padding-top: 20px;"></div>
                   </form>
               </div>

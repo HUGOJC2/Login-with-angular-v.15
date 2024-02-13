@@ -24,6 +24,12 @@
     flex: 1;
   }
 
+  .contra{
+    top: auto;
+    right: inherit;
+    background: white;
+  }
+
   .toolbar {
     position: absolute;
     top: 0;

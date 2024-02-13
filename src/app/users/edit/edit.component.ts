@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from 'src/app/model/users';
 import { UsersService } from 'src/app/service/users.service';
+import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -13,6 +13,9 @@ import Swal from 'sweetalert2';
 export class EditComponent {
   editForm: any;
   id = this.route.snapshot.paramMap.get('id') || '';
+  faEyeSlash = faEyeSlash;
+  faEye = faEye;
+  fieldTextType: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,10 +28,10 @@ export class EditComponent {
     this.usersService.getUser(parseInt(this.id)).subscribe((res) => {
       this.editForm = this.fb.group({
         name: [res.name, [Validators.required, Validators.minLength(4)]],
-        middle_name: [res.middle_name, [Validators.required, Validators.minLength(3)]],
-        last_name: [res.last_name, [Validators.required, Validators.minLength(3)]],
-        username: [res.username, [Validators.required, Validators.minLength(3)]],
-        // password: ['', [Validators.required, Validators.minLength(3)]],
+        middle_name: [res.middle_name, [Validators.required, Validators.minLength(4)]],
+        last_name: [res.last_name, [Validators.required, Validators.minLength(4)]],
+        username: [res.username, [Validators.required, Validators.minLength(4)]],
+        password: [res.password, [Validators.required, Validators.minLength(4)]],
       })
     });
   }
@@ -49,9 +52,13 @@ export class EditComponent {
     return this.editForm.get('username');
   }
 
-  // get password() {
-  //   return this.editForm.get('password');
-  // }
+  get password() {
+     return this.editForm.get('password');
+  }
+
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
+  }
 
   update(){
     if(this.editForm.valid){

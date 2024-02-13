@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 import { UsersService } from 'src/app/service/users.service';
 import { User } from 'src/app/model/users';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-detail',
@@ -12,6 +12,9 @@ import { User } from 'src/app/model/users';
 export class DetailComponent implements OnInit{
   user!: User;
   id : string = "";
+  faEyeSlash = faEyeSlash;
+  faEye = faEye;
+  fieldTextType: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,6 +30,10 @@ export class DetailComponent implements OnInit{
     this.usersService.getUser(parseInt(this.id)).subscribe((res) => {
       this.user = res;
     });
+  }
+
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
   }
     
 }

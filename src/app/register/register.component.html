@@ -25,7 +25,7 @@
                               El campo es obligatorio
                             </div>
                             <div *ngIf="name.errors.minlength">
-                              El usuario debe ser de al menos 4 caracteres
+                              El Nombre debe ser de al menos 4 caracteres
                             </div>
                         </div>
 
@@ -45,7 +45,7 @@
                               El campo es obligatorio
                             </div>
                             <div *ngIf="middle_name.errors.minlength">
-                              El usuario debe ser de al menos 4 caracteres
+                              El Apellido paterno debe ser de al menos 4 caracteres
                             </div>
                         </div>
 
@@ -65,7 +65,7 @@
                               El campo es obligatorio
                             </div>
                             <div *ngIf="last_name.errors.minlength">
-                              El usuario debe ser de al menos 4 caracteres
+                              El Apellido materno debe ser de al menos 4 caracteres
                             </div>
                         </div>
                       
@@ -85,12 +85,12 @@
                               El campo es obligatorio
                             </div>
                             <div *ngIf="username.errors.minlength">
-                              El usuario debe ser de al menos 4 caracteres
+                              El Usuario debe ser de al menos 4 caracteres
                             </div>
                         </div>
 
-                        <div class="wrap-input100 validate-input" data-validate = "Porfavor ingresa tu Contraseña">
-                            <input class="input100" type="password" name="password" placeholder="Contraseña" formControlName="password" required [ngClass]="{
+                        <div class="wrap-input100 validate-input" data-validate = "Porfavor ingresa tu Contraseña" style="display: flex;">
+                            <input class="input100" [type]="fieldTextType ? 'text' : 'password'" name="password" placeholder="Contraseña" formControlName="password" required [ngClass]="{
                                 'is-invalid':
                                 password.invalid &&
                                   (password.dirty ||
@@ -98,6 +98,10 @@
                                   password.errors.minlength),
                                 'is-valid': password.valid
                               }" />
+                              <span class="input-group-text">
+                                <fa-icon [icon]="faEyeSlash" *ngIf="!fieldTextType" (click)="toggleFieldTextType()" />
+                                <fa-icon [icon]="faEye" *ngIf="fieldTextType" (click)="toggleFieldTextType()" />
+                              </span>
                             <span class="focus-input100"></span>
                         </div>
                         <div *ngIf="password.invalid && (password.dirty || password.touched)" class="form-text invalid">
@@ -105,7 +109,7 @@
                               El campo es obligatorio
                             </div>
                             <div *ngIf="password.errors.minlength">
-                              El usuario debe ser de al menos 4 caracteres
+                              La Contraseña debe ser de al menos 4 caracteres
                             </div>
                         </div>
 

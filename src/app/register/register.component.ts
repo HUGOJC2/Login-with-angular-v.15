@@ -4,6 +4,7 @@ import Swal from 'sweetalert2'
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessagesModule } from 'primeng/messages';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-register',
@@ -12,16 +13,19 @@ import { MessagesModule } from 'primeng/messages';
 })
 export class RegisterComponent implements OnInit{
   registerForm: any;
+  faEyeSlash = faEyeSlash;
+  faEye = faEye;
+  fieldTextType: boolean = false;
 
   constructor(private userService: UsersService, private router: Router, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(4)]],
-      middle_name: ['', [Validators.required, Validators.minLength(3)]],
-      last_name: ['', [Validators.required, Validators.minLength(3)]],
-      username: ['', [Validators.required, Validators.minLength(3)]],
-      password: ['', [Validators.required, Validators.minLength(3)]],
+      middle_name: ['', [Validators.required, Validators.minLength(4)]],
+      last_name: ['', [Validators.required, Validators.minLength(4)]],
+      username: ['', [Validators.required, Validators.minLength(4)]],
+      password: ['', [Validators.required, Validators.minLength(4)]],
     })
   }
 
@@ -43,6 +47,10 @@ export class RegisterComponent implements OnInit{
 
   get password() {
     return this.registerForm.get('password');
+  }
+
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
   }
 
   registro(){

@@ -361,6 +361,8 @@
   width: 100%;
   background-color: #fff;
   border-radius: 27px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   position: relative;
   z-index: 1;
   border:0px;
@@ -371,7 +373,6 @@
   font-size: 15px;
   color: #351538;
   line-height: 1.2;
-  margin-top: 20px;
   position: relative;
   display: block;
   width: 100%;
