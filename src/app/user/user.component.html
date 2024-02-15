@@ -1,0 +1,51 @@
+<div class="content" role="main">
+    <div class="card_user">
+        <header style="padding: 10px 0px">
+            <h1 class="text-center title"><b>Informacion</b></h1>
+        </header>
+        <div style="display: flex;">
+            <div class="foto">
+                <span class="text-center title">Foto</span>
+                <i class="pi pi-user" style="font-size: 5rem; color: white;"></i>
+                <button class="btn_foto">Cambiar</button>
+            </div>
+            <div class="datos">
+                <div class="info" *ngIf="user">
+                    <form class="login100-form validate-form p-l-55 p-r-55 p-t-178" *ngIf="user" style="text-align: left;">
+                        <b>Nombre:</b> 
+                        <div>
+                            <input class="input100" type="text" name="name" value="{{ user.name }}" readonly>
+                        </div>
+                        
+                        <b>Apellido Paterno:</b>
+                        <div>
+                            <input class="input100" type="text" name="name" value="{{ user.middle_name }}" readonly>
+                        </div>
+
+                        <b>Apellido Materno:</b>
+                        <div>
+                            <input class="input100" type="text" name="name" value="{{ user.last_name }}" readonly>
+                        </div>
+                        
+                        <b>Usuario:</b>
+                        <div >
+                            <input class="input100" type="text" name="username" value="{{ user.username }}" readonly>
+                        </div>
+                        
+                        <b>Contraseña:</b>
+                        <div style="display: flex;">
+                            <input class="input100" [type]="fieldTextType ? 'text' : 'password'" name="pass" value="{{ user.password }}" readonly style="width: 150px;">
+                            <span>
+                                <fa-icon [icon]="faEyeSlash" *ngIf="!fieldTextType" (click)="toggleFieldTextType()" />
+                                <fa-icon [icon]="faEye" *ngIf="fieldTextType" (click)="toggleFieldTextType()" />
+                            </span>
+                        </div>
+                  </form>           
+                </div>
+            </div>
+        </div>
+        <button class="p-button-sm btn btn-secondary" routerLink="/home" style="margin-top: 40px;">
+            <i class="pi pi-arrow-circle-left" style="font-size: 0.8rem"></i> Regresar
+        </button>
+    </div>
+</div>

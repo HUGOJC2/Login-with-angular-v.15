@@ -38,4 +38,8 @@ export class UsersService {
     return this.http.delete(`${environment.apiUrl}/user/${id}`, OPTIONS);
   }
 
+  getInfo(username: string): Observable<User> {
+    return this.http.get<User>(`${environment.apiUrl}/user/detail/${username}`, OPTIONS);
+  }
+
 }

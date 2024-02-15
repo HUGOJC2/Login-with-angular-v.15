@@ -21,6 +21,7 @@ import { ButtonModule } from 'primeng/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     DetailComponent,
     ToolbarComponent,
     HomeComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,

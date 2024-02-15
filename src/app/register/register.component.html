@@ -1,127 +1,125 @@
 <div class="content" role="main">
-
-    <!-- Registro -->
-    <div class="limiter">
-          <div class="container-login100">
-              <div class="wrap-login100">
-                  <form class="login100-form validate-form p-l-55 p-r-55 p-t-178" [formGroup]="registerForm" (ngSubmit)="registro()">
-                        <span class="login100-form-title">
-                            Registro
-                        </span>
+  <div class="limiter">
+    <div class="container-login100">
+      <div class="wrap-login100">
+          <form class="login100-form validate-form p-l-55 p-r-55 p-t-178" [formGroup]="registerForm" (ngSubmit)="registro()">
+            <span class="login100-form-title">
+                Registro
+            </span>
   
-                        <div class="wrap-input100 validate-input m-b-16">
-                            <input class="input100" type="text" name="name" placeholder="Nombre" formControlName="name" required [ngClass]="{
-                                'is-invalid':
-                                  name.invalid &&
-                                  (name.dirty ||
-                                  name.touched ||
-                                  name.errors.minlength),
-                                'is-valid': name.valid
-                              }" />
-                            <span class="focus-input100"></span>
-                        </div>
-                        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="form-text invalid">
-                            <div *ngIf="name.errors.required">
-                              El campo es obligatorio
-                            </div>
-                            <div *ngIf="name.errors.minlength">
-                              El Nombre debe ser de al menos 4 caracteres
-                            </div>
-                        </div>
-
-                        <div class="wrap-input100 validate-input m-b-16" data-validate="Porfavor ingresa tu Apellido Paterno">
-                            <input class="input100" type="text" name="middle_name" placeholder="Apellido Paterno" formControlName="middle_name" required [ngClass]="{
-                                'is-invalid':
-                                middle_name.invalid &&
-                                  (middle_name.dirty ||
-                                  middle_name.touched ||
-                                  middle_name.errors.minlength),
-                                'is-valid': middle_name.valid
-                              }" />
-                            <span class="focus-input100"></span>
-                        </div>
-                        <div *ngIf="middle_name.invalid && (middle_name.dirty || middle_name.touched)" class="form-text invalid">
-                            <div *ngIf="middle_name.errors.required">
-                              El campo es obligatorio
-                            </div>
-                            <div *ngIf="middle_name.errors.minlength">
-                              El Apellido paterno debe ser de al menos 4 caracteres
-                            </div>
-                        </div>
-
-                        <div class="wrap-input100 validate-input m-b-16" data-validate="Porfavor ingresa tu Apellido Materno">
-                            <input class="input100" type="text" name="last_name" placeholder="Apellido Materno" formControlName="last_name" required [ngClass]="{
-                                'is-invalid':
-                                last_name.invalid &&
-                                  (last_name.dirty ||
-                                  last_name.touched ||
-                                  last_name.errors.minlength),
-                                'is-valid': last_name.valid
-                              }" />
-                            <span class="focus-input100"></span>
-                        </div>
-                        <div *ngIf="last_name.invalid && (last_name.dirty || last_name.touched)" class="form-text invalid">
-                            <div *ngIf="last_name.errors.required">
-                              El campo es obligatorio
-                            </div>
-                            <div *ngIf="last_name.errors.minlength">
-                              El Apellido materno debe ser de al menos 4 caracteres
-                            </div>
-                        </div>
-                      
-                        <div class="wrap-input100 validate-input m-b-16" data-validate="Porfavor ingresa tu Usuario">
-                            <input class="input100" type="text" name="username" placeholder="Usuario" formControlName="username" required [ngClass]="{
-                                'is-invalid':
-                                username.invalid &&
-                                  (username.dirty ||
-                                  username.touched ||
-                                  username.errors.minlength),
-                                'is-valid': username.valid
-                              }" />
-                            <span class="focus-input100"></span>
-                        </div>
-                        <div *ngIf="username.invalid && (username.dirty || username.touched)" class="form-text invalid">
-                            <div *ngIf="username.errors.required">
-                              El campo es obligatorio
-                            </div>
-                            <div *ngIf="username.errors.minlength">
-                              El Usuario debe ser de al menos 4 caracteres
-                            </div>
-                        </div>
-
-                        <div class="wrap-input100 validate-input" data-validate = "Porfavor ingresa tu Contraseña" style="display: flex;">
-                            <input class="input100" [type]="fieldTextType ? 'text' : 'password'" name="password" placeholder="Contraseña" formControlName="password" required [ngClass]="{
-                                'is-invalid':
-                                password.invalid &&
-                                  (password.dirty ||
-                                  password.touched ||
-                                  password.errors.minlength),
-                                'is-valid': password.valid
-                              }" />
-                              <span class="input-group-text">
-                                <fa-icon [icon]="faEyeSlash" *ngIf="!fieldTextType" (click)="toggleFieldTextType()" />
-                                <fa-icon [icon]="faEye" *ngIf="fieldTextType" (click)="toggleFieldTextType()" />
-                              </span>
-                            <span class="focus-input100"></span>
-                        </div>
-                        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="form-text invalid">
-                            <div *ngIf="password.errors.required">
-                              El campo es obligatorio
-                            </div>
-                            <div *ngIf="password.errors.minlength">
-                              La Contraseña debe ser de al menos 4 caracteres
-                            </div>
-                        </div>
-
-                        <div class="container-login100-form-btn">
-                            <button class="login100-form-btn" type="submit">
-                                Ingresar
-                            </button>
-                        </div>
-  
-                        <div class="flex-col-c p-t-170 p-b-40" style="padding-bottom: 10px;"></div>
-                  </form>
+            <div class="wrap-input100 validate-input m-b-16">
+              <input class="input100" type="text" name="name" placeholder="Nombre" formControlName="name" required [ngClass]="{
+                  'is-invalid':
+                    name.invalid &&
+                    (name.dirty ||
+                    name.touched ||
+                    name.errors.minlength),
+                  'is-valid': name.valid
+                }" />
+              <span class="focus-input100"></span>
+            </div>
+              <div *ngIf="name.invalid && (name.dirty || name.touched)" class="form-text invalid">
+                <div *ngIf="name.errors.required">
+                  El campo es obligatorio
+                </div>
+                <div *ngIf="name.errors.minlength">
+                  El Nombre debe ser de al menos 4 caracteres
+                </div>
               </div>
-          </div>
+  
+              <div class="wrap-input100 validate-input m-b-16" data-validate="Porfavor ingresa tu Apellido Paterno">
+                <input class="input100" type="text" name="middle_name" placeholder="Apellido Paterno" formControlName="middle_name" required [ngClass]="{
+                    'is-invalid':
+                    middle_name.invalid &&
+                      (middle_name.dirty ||
+                      middle_name.touched ||
+                      middle_name.errors.minlength),
+                    'is-valid': middle_name.valid
+                  }" />
+                <span class="focus-input100"></span>
+              </div>
+              <div *ngIf="middle_name.invalid && (middle_name.dirty || middle_name.touched)" class="form-text invalid">
+                <div *ngIf="middle_name.errors.required">
+                  El campo es obligatorio
+                </div>
+                <div *ngIf="middle_name.errors.minlength">
+                  El Apellido paterno debe ser de al menos 4 caracteres
+                </div>
+              </div>
+  
+              <div class="wrap-input100 validate-input m-b-16" data-validate="Porfavor ingresa tu Apellido Materno">
+                <input class="input100" type="text" name="last_name" placeholder="Apellido Materno" formControlName="last_name" required [ngClass]="{
+                    'is-invalid':
+                    last_name.invalid &&
+                      (last_name.dirty ||
+                      last_name.touched ||
+                      last_name.errors.minlength),
+                    'is-valid': last_name.valid
+                  }" />
+                <span class="focus-input100"></span>
+              </div>
+              <div *ngIf="last_name.invalid && (last_name.dirty || last_name.touched)" class="form-text invalid">
+                <div *ngIf="last_name.errors.required">
+                  El campo es obligatorio
+                </div>
+                <div *ngIf="last_name.errors.minlength">
+                  El Apellido materno debe ser de al menos 4 caracteres
+                </div>
+              </div>
+            
+              <div class="wrap-input100 validate-input m-b-16" data-validate="Porfavor ingresa tu Usuario">
+                <input class="input100" type="text" name="username" placeholder="Usuario" formControlName="username" required [ngClass]="{
+                    'is-invalid':
+                    username.invalid &&
+                      (username.dirty ||
+                      username.touched ||
+                      username.errors.minlength),
+                    'is-valid': username.valid
+                  }" />
+                <span class="focus-input100"></span>
+              </div>
+              <div *ngIf="username.invalid && (username.dirty || username.touched)" class="form-text invalid">
+                <div *ngIf="username.errors.required">
+                  El campo es obligatorio
+                </div>
+                <div *ngIf="username.errors.minlength">
+                  El Usuario debe ser de al menos 4 caracteres
+                </div>
+              </div>
+  
+              <div class="wrap-input100 validate-input" data-validate = "Porfavor ingresa tu Contraseña" style="display: flex;">
+                <input class="input100" [type]="fieldTextType ? 'text' : 'password'" name="password" placeholder="Contraseña" formControlName="password" required [ngClass]="{
+                    'is-invalid':
+                    password.invalid &&
+                      (password.dirty ||
+                      password.touched ||
+                      password.errors.minlength),
+                    'is-valid': password.valid
+                  }" />
+                <span class="input-group-text" style="border-radius: 27px;">
+                  <fa-icon [icon]="faEyeSlash" *ngIf="!fieldTextType" (click)="toggleFieldTextType()" />
+                  <fa-icon [icon]="faEye" *ngIf="fieldTextType" (click)="toggleFieldTextType()" />
+                </span>
+                <span class="focus-input100"></span>
+              </div>
+              <div *ngIf="password.invalid && (password.dirty || password.touched)" class="form-text invalid">
+                <div *ngIf="password.errors.required">
+                  El campo es obligatorio
+                </div>
+                <div *ngIf="password.errors.minlength">
+                  La Contraseña debe ser de al menos 4 caracteres
+                </div>
+              </div>
+  
+              <div class="container-login100-form-btn">
+                <button class="login100-form-btn" type="submit">
+                    Ingresar
+                </button>
+              </div>
+  
+              <div class="flex-col-c p-t-170 p-b-40" style="padding-bottom: 10px;"></div>
+        </form>
       </div>
+    </div>
   </div>
+</div>

@@ -36,7 +36,7 @@
                         <b class="campos">Contraseña:</b>
                         <div class="wrap-input100 validate-input" data-validate = "Porfavor ingresa tu Contraseña" style="display: flex;">
                             <input class="input100" [type]="fieldTextType ? 'text' : 'password'" name="pass" value="{{ user.password }}" readonly>
-                            <span class="input-group-text">
+                            <span class="input-group-text" style="border-radius: 27px;">
                                 <fa-icon [icon]="faEyeSlash" *ngIf="!fieldTextType" (click)="toggleFieldTextType()" />
                                 <fa-icon [icon]="faEye" *ngIf="fieldTextType" (click)="toggleFieldTextType()" />
                             </span>
