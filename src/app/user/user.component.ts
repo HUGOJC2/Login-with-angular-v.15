@@ -11,7 +11,7 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 })
 export class UserComponent implements OnInit{
   user!: User;
-  username: string = "";
+  username: string = this.route.snapshot.paramMap.get('username') || '';
   faEyeSlash = faEyeSlash;
   faEye = faEye;
   fieldTextType: boolean = false;
@@ -30,7 +30,6 @@ export class UserComponent implements OnInit{
   }
 
   getUser(): void {
-    this.username = this.route.snapshot.paramMap.get('username') || '';
     this.usersService.getInfo(this.username).subscribe((res) => {
       this.user = res;
     });

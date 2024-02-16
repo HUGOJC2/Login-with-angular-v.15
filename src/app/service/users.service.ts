@@ -42,4 +42,8 @@ export class UsersService {
     return this.http.get<User>(`${environment.apiUrl}/user/detail/${username}`, OPTIONS);
   }
 
+  updatePassword(username: string, pass: any){
+    return this.http.patch<User>(`${environment.apiUrl}/user/update_pass/${username}`, pass,  OPTIONS);
+  }
+
 }

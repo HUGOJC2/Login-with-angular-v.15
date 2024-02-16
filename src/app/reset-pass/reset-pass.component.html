@@ -1,0 +1,100 @@
+<div class="content" role="main">
+    <div class="limiter">
+        <div class="container-login100">
+          <div class="wrap-login100">
+              <form class="login100-form validate-form p-l-55 p-r-55 p-t-178" [formGroup]="passForm" (ngSubmit)="updatePass()">
+                <span class="login100-form-title">
+                    Cambio de Contraseña
+                </span>
+                <br>
+                <b class="campos">Contraseña Antigua:</b> 
+                  <div class="wrap-input100 validate-input" data-validate = "Porfavor ingresa tu Contraseña" style="display: flex;">
+                    <input class="input100" [type]="fieldTextType ? 'text' : 'password'" name="old_password" placeholder="Contraseña Antigua" formControlName="old_password" required [ngClass]="{
+                        'is-invalid':
+                        old_password.invalid &&
+                          (old_password.dirty ||
+                          old_password.touched ||
+                          old_password.errors.minlength),
+                        'is-valid': old_password.valid
+                      }" /> 
+                    <button class="input-group-text" style="border-radius: 27px;" type="button">
+                      <fa-icon [icon]="faEyeSlash" *ngIf="!fieldTextType" (click)="toggleFieldTextType()" />
+                      <fa-icon [icon]="faEye" *ngIf="fieldTextType" (click)="toggleFieldTextType()" />
+                    </button>
+                    <span class="focus-input100"></span>
+                  </div>
+                  <div *ngIf="old_password.invalid && (old_password.dirty || old_password.touched)" class="form-text invalid" style="margin-bottom: 20px;">
+                    <div *ngIf="old_password.errors.required">
+                      El campo es obligatorio
+                    </div>
+                  </div>
+                  <div *ngIf="old_password.touched" class="form-text invalid" style="margin-bottom: 20px;">
+                    <div *ngIf="!validPass()">
+                      La contraseña es incorrecta
+                    </div>
+                  </div>
+
+                  <b class="campos">Contraseña Nueva:</b> 
+                  <div class="wrap-input100 validate-input" data-validate = "Porfavor ingresa tu Contraseña" style="display: flex;">
+                    <input class="input100" [type]="fieldTextType2 ? 'text' : 'password'" name="old_password" placeholder="Contraseña Nueva" formControlName="new_password" required [ngClass]="{
+                        'is-invalid':
+                        new_password.invalid &&
+                          (new_password.dirty ||
+                          new_password.touched ||
+                          new_password.errors.minlength),
+                        'is-valid': new_password.valid
+                      } " /> 
+                    <button class="input-group-text" style="border-radius: 27px;" type="button">
+                      <fa-icon [icon]="faEyeSlash" *ngIf="!fieldTextType2" (click)="toggleFieldTextType2()" />
+                      <fa-icon [icon]="faEye" *ngIf="fieldTextType2" (click)="toggleFieldTextType2()" />
+                    </button>
+                    <span class="focus-input100"></span>
+                  </div>
+                  <div *ngIf="new_password.invalid && (new_password.dirty || new_password.touched)" class="form-text invalid" style="margin-bottom: 20px;">
+                    <div *ngIf="new_password.errors.required">
+                      El campo es obligatorio
+                    </div>
+                    <div *ngIf="new_password.errors.minlength">
+                      La Contraseña Nueva debe ser de al menos 4 caracteres
+                    </div>
+                  </div>
+
+                  <b class="campos">Repetir Nueva Contraseña:</b> 
+                  <div class="wrap-input100 validate-input" data-validate = "Porfavor ingresa tu Contraseña" style="display: flex;">
+                    <input class="input100" [type]="fieldTextType3 ? 'text' : 'password'" name="password" placeholder="Confirmacion" formControlName="password" required [ngClass]="{
+                        'is-invalid':
+                        password.invalid &&
+                          (password.dirty ||
+                          password.touched ||
+                          password.errors.minlength),
+                        'is-valid': password.valid
+                      }" /> 
+                    <button class="input-group-text" style="border-radius: 27px;" type="button">
+                      <fa-icon [icon]="faEyeSlash" *ngIf="!fieldTextType3" (click)="toggleFieldTextType3()" />
+                      <fa-icon [icon]="faEye" *ngIf="fieldTextType3" (click)="toggleFieldTextType3()" />
+                    </button>
+                    <span class="focus-input100"></span>
+                  </div>
+                  <div *ngIf="password.invalid && (password.dirty || password.touched)" class="form-text invalid" style="margin-bottom: 20px;">
+                    <div *ngIf="password.errors.required">
+                      El campo es obligatorio
+                    </div>
+                  </div>
+                  <div *ngIf="password.touched" class="form-text invalid" style="margin-bottom: 20px;">
+                    <div *ngIf="!valid_confirm_Pass()">
+                        No coincide
+                      </div>
+                  </div>
+      
+                  <div class="container-login100-form-btn">
+                    <button class="login100-form-btn" type="submit">
+                        Cambiar
+                    </button>
+                  </div>
+      
+                  <div class="flex-col-c p-t-170 p-b-40" style="padding-bottom: 10px;"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+</div>

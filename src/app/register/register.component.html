@@ -95,11 +95,11 @@
                       password.touched ||
                       password.errors.minlength),
                     'is-valid': password.valid
-                  }" />
-                <span class="input-group-text" style="border-radius: 27px;">
+                  }" /> 
+                <button class="input-group-text" style="border-radius: 27px;" type="button">
                   <fa-icon [icon]="faEyeSlash" *ngIf="!fieldTextType" (click)="toggleFieldTextType()" />
                   <fa-icon [icon]="faEye" *ngIf="fieldTextType" (click)="toggleFieldTextType()" />
-                </span>
+                </button>
                 <span class="focus-input100"></span>
               </div>
               <div *ngIf="password.invalid && (password.dirty || password.touched)" class="form-text invalid">

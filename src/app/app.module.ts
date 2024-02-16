@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserComponent } from './user/user.component';
+import { ResetPassComponent } from './reset-pass/reset-pass.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { UserComponent } from './user/user.component';
     ToolbarComponent,
     HomeComponent,
     UserComponent,
+    ResetPassComponent,
   ],
   imports: [
     BrowserModule,

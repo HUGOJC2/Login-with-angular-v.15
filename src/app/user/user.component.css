@@ -139,13 +139,15 @@
 
   .input100{
     border: 0px;
+    outline: none;
     background: #00FF0000;
+    padding-top: 5px;
     padding-bottom: 20px;
   }
 
   .login100-form {
     width: 100%;
-    position: relative;
+    
   }
 
   .info{
