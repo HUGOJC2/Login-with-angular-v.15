@@ -29,18 +29,9 @@ export class ResetPassComponent implements OnInit{
 
   ngOnInit(): void {
     this.passForm = this.fb.group({
-      old_password: ['', [Validators.required, Validators.minLength(4)]],
       new_password: ['', [Validators.required, Validators.minLength(4)]],
       password: ['', [Validators.required]],
     })
-
-    this.userService.getInfo(this.username).subscribe((res) => {
-     this.pass = res.password;
-    });
-  }
-
-  get old_password() {
-    return this.passForm.get('old_password');
   }
 
   get new_password() {
@@ -59,19 +50,6 @@ export class ResetPassComponent implements OnInit{
     return false;
   }
 
-  validPass(): boolean {
-    if(this.pass == this.passForm.get('old_password').value){
-      this.old_pass = true;
-    }
-    else
-      this.old_pass = false;
-    return this.old_pass;
-  }
-
-  toggleFieldTextType() {
-    this.fieldTextType = !this.fieldTextType;
-  }
-
   toggleFieldTextType2() {
     this.fieldTextType2 = !this.fieldTextType2;
   }
@@ -79,13 +57,9 @@ export class ResetPassComponent implements OnInit{
   toggleFieldTextType3() {
     this.fieldTextType3 = !this.fieldTextType3;
   }
-
-  onForm2NameChange(target: any ) {
-    console.log(target.value);
-  }
   
   updatePass(){
-    if(this.passForm.valid && (this.pass == this.passForm.get('old_password').value) && this.passForm.get('new_password').value == this.passForm.get('password').value){
+    if(this.passForm.valid && this.passForm.get('new_password').value == this.passForm.get('password').value){
       const pass = {"password" : this.passForm.get('password').value}
       this.userService.updatePassword(this.username, pass).subscribe(
         (res) => {

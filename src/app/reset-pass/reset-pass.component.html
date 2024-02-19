@@ -7,32 +7,6 @@
                     Cambio de Contraseña
                 </span>
                 <br>
-                <b class="campos">Contraseña Antigua:</b> 
-                  <div class="wrap-input100 validate-input" data-validate = "Porfavor ingresa tu Contraseña" style="display: flex;">
-                    <input class="input100" [type]="fieldTextType ? 'text' : 'password'" name="old_password" placeholder="Contraseña Antigua" formControlName="old_password" required [ngClass]="{
-                        'is-invalid':
-                        old_password.invalid &&
-                          (old_password.dirty ||
-                          old_password.touched ||
-                          old_password.errors.minlength),
-                        'is-valid': old_password.valid
-                      }" /> 
-                    <button class="input-group-text" style="border-radius: 27px;" type="button">
-                      <fa-icon [icon]="faEyeSlash" *ngIf="!fieldTextType" (click)="toggleFieldTextType()" />
-                      <fa-icon [icon]="faEye" *ngIf="fieldTextType" (click)="toggleFieldTextType()" />
-                    </button>
-                    <span class="focus-input100"></span>
-                  </div>
-                  <div *ngIf="old_password.invalid && (old_password.dirty || old_password.touched)" class="form-text invalid" style="margin-bottom: 20px;">
-                    <div *ngIf="old_password.errors.required">
-                      El campo es obligatorio
-                    </div>
-                  </div>
-                  <div *ngIf="old_password.touched" class="form-text invalid" style="margin-bottom: 20px;">
-                    <div *ngIf="!validPass()">
-                      La contraseña es incorrecta
-                    </div>
-                  </div>
 
                   <b class="campos">Contraseña Nueva:</b> 
                   <div class="wrap-input100 validate-input" data-validate = "Porfavor ingresa tu Contraseña" style="display: flex;">
