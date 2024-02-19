@@ -32,14 +32,14 @@
                             <input class="input100" type="text" name="username" value="{{ user.username }}" readonly>
                         </div>
                         
-                        <b>Contraseña:</b>
+                        <!-- <b>Contraseña:</b>
                         <div style="display: flex;">
                             <input class="input100" [type]="fieldTextType ? 'text' : 'password'" name="pass" value="{{ user.password }}" readonly style="width: 150px;">
                             <button style="outline: none; border: 0px; background: #00FF0000;">
                                 <fa-icon [icon]="faEyeSlash" *ngIf="!fieldTextType" (click)="toggleFieldTextType()" />
                                 <fa-icon [icon]="faEye" *ngIf="fieldTextType" (click)="toggleFieldTextType()" />
                             </button>
-                        </div>
+                        </div> -->
                   </form>
                   <button class="btn_foto" routerLink="/pass/{{username}}">Cambiar Contraseña</button>    
                 </div>

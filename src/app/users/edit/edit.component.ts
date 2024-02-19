@@ -13,9 +13,9 @@ import Swal from 'sweetalert2';
 export class EditComponent {
   editForm: any;
   id = this.route.snapshot.paramMap.get('id') || '';
-  faEyeSlash = faEyeSlash;
-  faEye = faEye;
-  fieldTextType: boolean = false;
+  // faEyeSlash = faEyeSlash;
+  // faEye = faEye;
+  // fieldTextType: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,7 +31,7 @@ export class EditComponent {
         middle_name: [res.middle_name, [Validators.required, Validators.minLength(4)]],
         last_name: [res.last_name, [Validators.required, Validators.minLength(4)]],
         username: [res.username, [Validators.required, Validators.minLength(4)]],
-        password: [res.password, [Validators.required, Validators.minLength(4)]],
+        // password: [res.password, [Validators.required, Validators.minLength(4)]],
       })
     });
   }
@@ -56,9 +56,9 @@ export class EditComponent {
      return this.editForm.get('password');
   }
 
-  toggleFieldTextType() {
-    this.fieldTextType = !this.fieldTextType;
-  }
+  // toggleFieldTextType() {
+  //   this.fieldTextType = !this.fieldTextType;
+  // }
 
   update(){
     if(this.editForm.valid){

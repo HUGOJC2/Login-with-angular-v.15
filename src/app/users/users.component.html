@@ -72,6 +72,11 @@
                   </button>
                 </div>
                 <div>
+                  <button class="btn btn-success" routerLink="/pass/{{user.username}}">
+                    <i class="pi pi-key"></i>
+                  </button>
+                </div>
+                <div>
                   <button class="btn btn-danger" (click)="DeleteUser(user, user.id)">
                     <i class="pi pi-trash"></i>
                   </button>

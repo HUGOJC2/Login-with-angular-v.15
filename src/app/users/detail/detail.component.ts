@@ -12,9 +12,9 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 export class DetailComponent implements OnInit{
   user!: User;
   id : string = "";
-  faEyeSlash = faEyeSlash;
-  faEye = faEye;
-  fieldTextType: boolean = false;
+  // faEyeSlash = faEyeSlash;
+  // faEye = faEye;
+  // fieldTextType: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,8 +32,8 @@ export class DetailComponent implements OnInit{
     });
   }
 
-  toggleFieldTextType() {
-    this.fieldTextType = !this.fieldTextType;
-  }
+  // toggleFieldTextType() {
+  //   this.fieldTextType = !this.fieldTextType;
+  // }
     
 }

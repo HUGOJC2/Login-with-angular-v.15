@@ -55,9 +55,9 @@ export class RegisterComponent implements OnInit{
 
   registro(){
     if(this.registerForm.valid){
-      this.userService.register(this.registerForm.value).subscribe(
-        (res) => {
-         Swal.fire({
+      this.userService.register(this.registerForm.value).subscribe({
+        complete: () => {
+          Swal.fire({
             position: "center",
             icon: "success",
             title: "Usuario registrado con Exito",
@@ -65,8 +65,16 @@ export class RegisterComponent implements OnInit{
             timer: 1200,
           });
           this.router.navigate(['/users']);
+        },
+        error: (err) => {
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            timer: 1200,
+            text: err.error.message,
+          })
         }
-      );
+      });
     }
     else{
       this.registerForm.markAllAsTouched();
