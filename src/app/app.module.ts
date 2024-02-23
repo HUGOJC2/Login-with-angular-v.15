@@ -23,6 +23,9 @@ import { HomeComponent } from './home/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserComponent } from './user/user.component';
 import { ResetPassComponent } from './reset-pass/reset-pass.component';
+import { RolesComponent } from './auth_user/roles/roles.component';
+import { PermissionsComponent } from './auth_user/permissions/permissions.component';
+import { NgxPermissionsModule } from 'ngx-permissions';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,8 @@ import { ResetPassComponent } from './reset-pass/reset-pass.component';
     HomeComponent,
     UserComponent,
     ResetPassComponent,
+    RolesComponent,
+    PermissionsComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +54,7 @@ import { ResetPassComponent } from './reset-pass/reset-pass.component';
     AvatarModule,
     ButtonModule,
     BrowserAnimationsModule,
+    NgxPermissionsModule.forRoot(),
     FormsModule,
     FontAwesomeModule,
   ],

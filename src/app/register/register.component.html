@@ -110,6 +110,14 @@
                   La Contraseña debe ser de al menos 4 caracteres
                 </div>
               </div>
+
+              <div class="wrap-input100 validate-input m-b-16" data-validate="Porfavor ingresa tu Usuario">
+                <select class="input_role" name="valor_rol" (change)="obtener_role($event)">
+                  <option value="" disabled selected hidden>Elije un rol</option>
+                  <option *ngFor="let valor_rol of roles let i=index" [value]="roles[i].id">{{roles[i].role}}</option>
+                </select>
+                <span class="focus-input100"></span>
+              </div>
   
               <div class="container-login100-form-btn">
                 <button class="login100-form-btn" type="submit">

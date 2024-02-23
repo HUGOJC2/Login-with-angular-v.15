@@ -118,6 +118,15 @@
                             </div>
                         </div> -->
 
+                        <b class="campos">Rol:</b>
+                        <div class="wrap-input100 validate-input m-b-16" data-validate="Porfavor ingresa tu Usuario">
+                          <select class="input_role" name="valor_rol" (change)="obtener_role($event)">
+                            <option [value]="valor_rol" disabled selected hidden>{{role}}</option>
+                            <option *ngFor="let valor_rol of roles2 let i=index" [value]="roles2[i].id">{{roles2[i].role}}</option>
+                          </select>
+                          <span class="focus-input100"></span>
+                        </div>
+
                         <div class="container-login100-form-btn">
                             <button class="login100-form-btn" type="submit">
                                 Actualizar

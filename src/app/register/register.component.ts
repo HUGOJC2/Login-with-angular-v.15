@@ -3,8 +3,9 @@ import { UsersService } from '../service/users.service';
 import Swal from 'sweetalert2'
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MessagesModule } from 'primeng/messages';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { AuthuserService } from '../service/authuser.service';
+import { Roles } from '../model/roles';
 
 @Component({
   selector: 'app-register',
@@ -16,8 +17,11 @@ export class RegisterComponent implements OnInit{
   faEyeSlash = faEyeSlash;
   faEye = faEye;
   fieldTextType: boolean = false;
+  valor_rol: number | undefined;
+  roles: Roles[] = [];
 
-  constructor(private userService: UsersService, private router: Router, private fb: FormBuilder) {}
+  constructor(private userService: UsersService, private router: Router, private fb: FormBuilder,
+    private authuserService: AuthuserService) {}
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -26,7 +30,12 @@ export class RegisterComponent implements OnInit{
       last_name: ['', [Validators.required, Validators.minLength(4)]],
       username: ['', [Validators.required, Validators.minLength(4)]],
       password: ['', [Validators.required, Validators.minLength(4)]],
+      id_role: []
     })
+
+    this.authuserService.getRoles().subscribe(res =>{
+      this.roles = res
+    });
   }
 
   get name() {
@@ -49,11 +58,16 @@ export class RegisterComponent implements OnInit{
     return this.registerForm.get('password');
   }
 
+  obtener_role(event: any){
+    this.valor_rol =  event.target.value;
+  }
+
   toggleFieldTextType() {
     this.fieldTextType = !this.fieldTextType;
   }
 
   registro(){
+    this.registerForm.controls['id_role'].setValue(this.valor_rol);
     if(this.registerForm.valid){
       this.userService.register(this.registerForm.value).subscribe({
         complete: () => {

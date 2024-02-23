@@ -9,6 +9,8 @@ import { AuthGuard } from './guards/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 import { ResetPassComponent } from './reset-pass/reset-pass.component';
+import { RolesComponent } from './auth_user/roles/roles.component';
+import { PermissionsComponent } from './auth_user/permissions/permissions.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -19,6 +21,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   { path: 'user/:username', component: UserComponent, canActivate: [AuthGuard]},
   { path: 'pass/:username', component: ResetPassComponent, canActivate: [AuthGuard]},
+  { path: 'roles', component: RolesComponent, canActivate: [AuthGuard]},
+  { path: 'permissions', component: PermissionsComponent, canActivate: [AuthGuard]},
   { path: '**', redirectTo: '/login', pathMatch: 'full'}
 ];
 

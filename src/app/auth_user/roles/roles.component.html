@@ -1,0 +1,64 @@
+<div class="content" role="main">
+    <div class="p-table">
+      <header style="padding-top: 10px; padding-bottom: 20px;">
+        <h1 class="text-center title"><b>Administraci&oacute;n de Roles</b></h1>
+      </header>
+      <p-toolbar styleClass="p-mb-4">
+        <button class="p-button-sm btn btn-success" routerLink="/register">
+          <i class="pi pi-user-plus" style="font-size: 0.8rem"></i> Agregar
+        </button>
+      </p-toolbar>
+      <p-table styleClass="p-datatable-sm p-datatable-striped p-datatable-responsive-demo" #dt [value]="roles"
+        [paginator]="true" [rows]="7" [showCurrentPageReport]="true"
+        currentPageReportTemplate="Registros del {first} al {last} de {totalRecords} Registros" [scrollable]="true"
+        dataKey="id" scrollHeight="500px" [style]="{ width: '100%' }" [rowsPerPageOptions]="[5, 10]"
+        (onLazyLoad)="getAll($event)" [loading]="loadingTable" [totalRecords]="totalRecords">
+  
+        <ng-template pTemplate="header" let-rowData="rowData">
+          <tr>
+            <th pSortableColumn="id" style="border: none"><i class="pi pi-sort-amount-down-alt"></i> ID</th>
+            <th pSortableColumn="role" style="border: none"><i class="pi pi-sort-amount-down-alt"></i> Rol</th>
+            <th style="border: none; text-align: center;" >Acciones</th>
+          </tr>
+          <tr>
+            <th style="border: none">
+              <input pInputText type="text" (input)="applyFilterGlobal($event, 'id', 'contains')"
+                placeholder="Busqueda por id" class="p-column-filter p-inputtext-sm" />
+            </th>
+            <th style="border: none">
+              <input pInputText type="text" (input)="applyFilterGlobal($event, 'role', 'contains')"
+                placeholder="Busqueda por rol" class="p-column-filter p-inputtext-sm" />
+            </th>
+            <th style="border: none; text-align: center;"><i class="pi pi-wrench" style="font-size: 2rem"></i></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rol let-i>
+          <tr [pSelectableRow]="rol">
+            <td style="text-align: center">{{ rol.id }}</td>
+            <td>{{ rol.role }}</td>
+            <td>
+                <div class="botones">
+                  <div>
+                    <button class="btn btn-primary btnEditar" routerLink="">
+                      <i class="pi pi-pencil" style="font-size: 0.8rem"></i>
+                    </button>
+                  </div>
+                  <div>
+                    <button class="btn btn-secondary" routerLink="">
+                      <i class="pi pi-eye"></i>
+                    </button>
+                  </div>
+                  <div>
+                    <button class="btn btn-danger">
+                      <i class="pi pi-trash"></i>
+                    </button>
+                  </div>
+                </div>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft"> </ng-template>
+        <ng-template pTemplate="paginatorright"> </ng-template>
+      </p-table>
+    </div>
+  </div>

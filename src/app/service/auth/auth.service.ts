@@ -1,9 +1,11 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
-import { HttpClient, HttpHeaders, } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
-import { tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment.development';
+import { Observable, throwError } from 'rxjs';
+import { NgxRolesService } from 'ngx-permissions';
 
 const OPTIONS = {
   reportProgress: true,
@@ -16,18 +18,35 @@ export class AuthService {
   hasUser = false;
   checkAuth = setInterval(() => { null }, 0);
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router,
+    private rs: NgxRolesService) {
     //this.getToken();
+  }
+
+  getLoggedUserPermissions(username: any): Observable<any> {
+
+    return this.http.get(`${environment.apiUrl}/user/${username}/permissions`, OPTIONS).pipe(
+      tap(data => {
+        return data;
+     }),
+      catchError((err: HttpErrorResponse) => {
+        return throwError(err);
+      }))
   }
 
   isAuth() {
     //Token decodificado
-    
     const decodedToken = this.getTokenData();
 
     if (decodedToken) {
       this.getUserLoggedInData.emit(decodedToken);
       this.hasUser = true;
+      //Hacemos la carga del rol con sus respectivos permisos
+      //Rol y permisos provenientes desde la base de datos
+      this.getLoggedUserPermissions(decodedToken.username).subscribe((data) => {
+        this.rs.addRoleWithPermissions(data.payload.role, data.payload.permissions);
+      });
+      
     } else {
       this.getUserLoggedInData.emit();
       this.hasUser = false;
@@ -79,6 +98,7 @@ export class AuthService {
 
   logOut() {
     let successfullyRemovedToken = false;
+    this.rs.flushRolesAndPermissions();
     localStorage.removeItem('token');
     if (localStorage.getItem('token') === null) {
       successfullyRemovedToken = true;
