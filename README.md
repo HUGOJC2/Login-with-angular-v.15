@@ -1,7 +1,5 @@
 # Template en Angular
 
-![Logo](https://transparencia.sacmex.cdmx.gob.mx/plantilla//img/LogoN2.png)
-
 This project was generated with:  
 [Angular CLI](https://github.com/angular/angular-cli) version: 15.2.10.  
 [NPM](https://www.npmjs.com): 10.2.4  
