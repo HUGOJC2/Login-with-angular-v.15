@@ -1,0 +1,29 @@
+<div class="content" role="main">
+    <div class="wrap-login100">
+        <span class="login100-form-title">
+            Generador de Reportes
+        </span>
+        <div class="form">
+            <div style="display: flex; justify-content: space-around;">
+                <b class="campos">Fecha Inicio:</b>
+                <b class="campos">Fecha Fin:</b>  
+            </div>
+            <div style="display: flex; margin-top: 30px; justify-content: space-around;">
+                <div>
+                    <p-calendar [(ngModel)]="date1" dateFormat="dd/mm/yy" [showIcon]="true" dataType="string"></p-calendar>
+                </div>
+                <div>
+                    <p-calendar [(ngModel)]="date2" dateFormat="dd/mm/yy" [showIcon]="true" dataType="string"></p-calendar>
+                </div>  
+            </div>
+        </div>
+
+        <div class="container-login100-form-btn">
+            <button class="login100-form-btn" (click)="reporte()">
+                Generar
+            </button>
+        </div>
+
+        <div class="flex-col-c p-t-170 p-b-40" style="padding-bottom: 30px;"></div>
+    </div>
+</div>

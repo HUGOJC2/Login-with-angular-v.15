@@ -1,6 +1,23 @@
-# Login
+# Template en Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.10.
+![Logo](https://transparencia.sacmex.cdmx.gob.mx/plantilla//img/LogoN2.png)
+
+This project was generated with:  
+[Angular CLI](https://github.com/angular/angular-cli) version: 15.2.10.  
+[NPM](https://www.npmjs.com): 10.2.4  
+[Nodejs](https://nodejs.org/en): 20.11.0  
+
+This project is a template in Angular
+
+[![Angular Badge](https://img.shields.io/badge/angular-15.2.10-red)] (https://www.npmjs.com/package/@angular/cli/v/15.2.10) [![Static Badge](https://img.shields.io/badge/npm-10.2.4-brightgreen)] (https://www.npmjs.com/package/npm/v/10.2.4) [![Static Badge](https://img.shields.io/badge/nodejs-20.11.0-brightblue?color=6EACFF)] (https://nodejs.org/en/download)
+
+## Installation
+
+Install with npm
+
+```bash
+  npm install
+```
 
 ## Development server
 

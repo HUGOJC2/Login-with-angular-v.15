@@ -1,4 +1,4 @@
-
+@import "primeicons/primeicons.css";
 :host {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 14px;
@@ -17,8 +17,176 @@
     margin: 8px 0;
   }
 
+  .btn_home{
+    background-color: #00FF0000;
+    border: #00FF0000;
+    color: white;
+    font-weight: bold;
+  }
+
+  .home{
+    background-color: #00FF0000;
+    border: #00FF0000;
+  }
+
+  .btn_sidebar{
+    background-color: #00FF0000;
+    border: #00FF0000;
+    width: 254px;
+  }
+  
+  .title {
+    font-family: JosefinSans-Bold;
+    display: block;
+    font-size: 35px;
+    color: #734a91;
+    text-align: center;
+    font-weight: bold;
+    width: 100%;
+    padding-bottom: 15px;
+    top: 0;
+    left: 0;
+  }
+
+  .dropdown__link{
+    color: rgb(184, 187, 191);
+    padding: 1em .7em;
+    text-decoration: none;
+    
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+
+    position: relative;
+    
+    border-radius: 6px;
+  }
+
+  .dropdown__check{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .dropdown__content{
+    display: grid;
+    grid-template-rows: var(--rows, 0fr);
+    transition: .3s grid-template-rows;
+  }
+
+  .dropdown__sub{
+    overflow: hidden;
+  }
+
+  .dropdown__list{
+    list-style: none;
+  }
+
+  .dropdown__list:has( :checked ){
+    --rows: 1fr;
+    --rotate: rotate(180deg);
+    --bg: #28303B;
+  }
+  
+  .dropdown__li{
+    width: 95%;
+    list-style: none;
+    margin-left: auto;
+  }
+
+  .btn_menu{
+    position: fixed;
+    height: 50px;
+    width: 70px;
+    top: auto;
+    left: inherit;
+    background-color: #00FF0000;
+    border: #00FF0000;
+    color: white;
+    font-weight: bold;
+  }
+
+  .btn_cerrar{
+    position: fixed;
+    top: auto;
+    right: inherit;
+    background-color: #00FF0000;
+    border: #00FF0000;
+    margin-right: 30px;
+  }
+
+  .cerrar{
+    color: white;
+    font-weight: bold;
+    vertical-align: middle;
+  }
+
   p {
     margin: 0;
+  }
+
+  .foto{
+    display: grid;
+    align-content: space-between;
+    padding: 40px;
+    width: 40%;
+    background-color: rgba(219, 50, 154, 0.3);
+    border-radius: 27px;
+    text-align: center;
+  }
+
+  .input100{
+    border: 0px;
+    outline: none;
+    background: #00FF0000;
+    padding-top: 5px;
+    padding-bottom: 20px;
+  }
+
+  .login100-form {
+    width: 100%;
+    
+  }
+
+  .info{
+    font-family: JosefinSans-Bold;
+    font-size: 17px;
+  }
+
+  .btn_foto {
+    position: sticky;
+    width: 100%;
+    height: 50px;
+    margin-top: 40px;
+    background-color: #71137e;
+    border-radius: 25px;
+    border:0px;
+  
+    font-family: Ubuntu-Bold;
+    font-size: 15px;
+    color: #fff;
+    text-transform: uppercase;
+  }
+  
+  .btn_foto:hover {
+    background-color: #44114b;
+  }
+
+  .datos{
+    padding: 50px;
+    width: 60%;
+    text-align: center;
+  }
+
+  .card_user{
+    margin-top: 11px;
+    padding: 40px;
+    width: 80%;
+    height:auto;
+    border-radius: 27px;
+    background: rgba(219, 124, 182, 0.4);
   }
 
   .spacer {

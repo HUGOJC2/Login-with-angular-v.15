@@ -1,0 +1,92 @@
+<div class="content" role="main">
+  <div class="p-table">
+    <header style="padding-top: 10px; padding-bottom: 20px;">
+      <h1 class="text-center title"><b>Administraci&oacute;n cuentas de usuarios</b></h1>
+    </header>
+    <p-toolbar styleClass="p-mb-4">
+        <button *ngxPermissionsOnly ="['crear_usuarios']" class="p-button-sm btn btn-success" routerLink="/register">
+          <i class="pi pi-user-plus" style="font-size: 0.8rem"></i> Agregar
+        </button>
+    </p-toolbar>
+    <p-table styleClass="p-datatable-sm p-datatable-striped p-datatable-responsive-demo" #dt [value]="users"
+      [paginator]="true" [rows]="7" [showCurrentPageReport]="true"
+      currentPageReportTemplate="Registros del {first} al {last} de {totalRecords} Registros" [scrollable]="true"
+      dataKey="id" scrollHeight="500px" [style]="{ width: '100%' }" [rowsPerPageOptions]="[5, 10]"
+      (onLazyLoad)="getAll($event)" [loading]="loadingTable" [totalRecords]="totalRecords">
+
+      <ng-template pTemplate="header" let-rowData="rowData">
+        <tr>
+          <th pSortableColumn="id" style="border: none"><i class="pi pi-sort-amount-down-alt"></i> ID</th>
+          <th pSortableColumn="username" style="border: none"><i class="pi pi-sort-amount-down-alt"></i> Usuario</th>
+          <th pSortableColumn="name" style="border: none"><i class="pi pi-sort-amount-down-alt"></i> Nombre</th>
+          <th pSortableColumn="middle_name" style="border: none">
+            <i class="pi pi-sort-amount-down-alt"></i> Apellido Paterno
+          </th>
+          <th pSortableColumn="lastlast_name" style="border: none">
+            <i class="pi pi-sort-amount-down-alt"></i> Apellido Materno
+          </th>
+          <th style="border: none; text-align: center;" >Acciones</th>
+        </tr>
+        <tr>
+          <th style="border: none">
+            <input pInputText type="text" (input)="applyFilterGlobal($event, 'id', 'contains')"
+              placeholder="Busqueda por id" class="p-column-filter p-inputtext-sm" />
+          </th>
+          <th style="border: none">
+            <input pInputText type="text" (input)="applyFilterGlobal($event, 'username', 'contains')"
+              placeholder="Busqueda por usuario" class="p-column-filter p-inputtext-sm" />
+          </th>
+          <th style="border: none">
+            <input pInputText type="text" (input)="applyFilterGlobal($event, 'name', 'contains')"
+              placeholder="Busqueda por nombre" class="p-column-filter p-inputtext-sm" />
+          </th>
+          <th style="border: none">
+            <input pInputText type="text" (input)="
+            applyFilterGlobal($event, 'middle_name', 'contains')" placeholder="Busqueda por apellido paterno"
+              class="p-column-filter p-inputtext-sm" />
+          </th>
+          <th style="border: none">
+            <input pInputText type="text" (input)="applyFilterGlobal($event, 'last_name', 'contains')"
+              placeholder="Busqueda por apellido materno" class="p-column-filter p-inputtext-sm" />
+          </th>
+          <th style="border: none; text-align: center;"><i class="pi pi-wrench" style="font-size: 2rem"></i></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-user let-i>
+        <tr [pSelectableRow]="user">
+          <td>{{ user.id }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.middle_name }}</td>
+          <td>{{ user.last_name }}</td>
+          <td>
+              <div class="botones">
+                <div *ngxPermissionsOnly ="['modificar_usuarios']">
+                  <button class="btn btn-primary btnEditar" routerLink="./edit/{{user.id}}">
+                    <i class="pi pi-pencil" style="font-size: 0.8rem"></i>
+                  </button>
+                </div>
+                <div>
+                  <button class="btn btn-secondary" routerLink="./detail/{{user.id}}">
+                    <i class="pi pi-eye"></i>
+                  </button>
+                </div>
+                <div *ngxPermissionsOnly ="['modificar_usuarios']">
+                  <button class="btn btn-success" routerLink="/pass/{{user.username}}">
+                    <i class="pi pi-key"></i>
+                  </button>
+                </div>
+                <div *ngxPermissionsOnly ="['eliminar_usuarios']">
+                  <button class="btn btn-danger" (click)="DeleteUser(user, user.id)">
+                    <i class="pi pi-trash"></i>
+                  </button>
+                </div>
+              </div>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="paginatorleft"> </ng-template>
+      <ng-template pTemplate="paginatorright"> </ng-template>
+    </p-table>
+  </div>
+</div>
